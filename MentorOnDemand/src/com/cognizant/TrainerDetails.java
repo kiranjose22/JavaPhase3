@@ -1,14 +1,25 @@
 package com.cognizant;
 
+import java.util.Set;
+
+import javax.persistence.CascadeType;
+//import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+//import javax.persistence.PrimaryKeyJoinColumn;
 
 @Entity
 public class TrainerDetails {
 
 	@Id
+	@GeneratedValue
+	private int id;
 	@OneToOne
+	@JoinColumn(name = "users_userMail")
 	private Users user;
 	private int experience;
 	private String timeZone;
@@ -16,8 +27,12 @@ public class TrainerDetails {
 	private String materialType;
 	private String linkedinUrl;
 
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name = "trainerdetails_id")
+	private Set<MentorSkills> mentorSkills;
+
 	public TrainerDetails(Users user, int experience, String timeZone, String timeSlot, String materialType,
-			String linkedinUrl) {
+			String linkedinUrl, Set<MentorSkills> mentorSkills) {
 		super();
 		this.user = user;
 		this.experience = experience;
@@ -25,6 +40,23 @@ public class TrainerDetails {
 		this.timeSlot = timeSlot;
 		this.materialType = materialType;
 		this.linkedinUrl = linkedinUrl;
+		this.mentorSkills = mentorSkills;
+	}
+
+	public Set<MentorSkills> getMentorSkills() {
+		return mentorSkills;
+	}
+
+	public void setMentorSkills(Set<MentorSkills> mentorSkills) {
+		this.mentorSkills = mentorSkills;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public Users getUser() {
@@ -74,7 +106,5 @@ public class TrainerDetails {
 	public void setLinkedinUrl(String linkedinUrl) {
 		this.linkedinUrl = linkedinUrl;
 	}
-	
-	
 
 }

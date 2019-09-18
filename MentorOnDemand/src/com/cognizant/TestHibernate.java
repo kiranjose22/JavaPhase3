@@ -28,9 +28,14 @@ public class TestHibernate {
 		Set<Payments> paymentSet2 = new HashSet<Payments>();
 		paymentSet.add(payment1);
 		paymentSet.add(payment2);
+		
+		MentorSkills skill1 = new MentorSkills(1, "skill1", "toc1", "pre1");
+		Set<MentorSkills> skillSet = new HashSet<MentorSkills>();
+		skillSet.add(skill1);
 
 		Users user1 = new Users("b@b.com", "b", "b", "blocked", "trainer", trainingSet, paymentSet);
 		Users user2 = new Users("a@a.com", "a", "a", "unblocked", "student", trainingSet, paymentSet2);
+		TrainerDetails trainer1 = new TrainerDetails(user1, 5, "+5:30", "9-7", "ppts", "/trainer1",skillSet);
 
 		MentorSkills mentorSkills = new MentorSkills(121, "core java", "java fundamentals", "programming fundamentals");
 
@@ -43,6 +48,8 @@ public class TestHibernate {
 
 		s.save(user1);
 		s.save(user2);
+		s.save(skill1);
+		s.save(trainer1);
 		s.save(training1);
 		s.save(training2);
 

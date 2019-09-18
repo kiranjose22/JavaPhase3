@@ -2,6 +2,7 @@ package com.cognizant;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+//import javax.persistence.OneToOne;
 
 @Entity
 public class MentorSkills {
@@ -51,7 +52,5 @@ public class MentorSkills {
 	public void setPrerequisites(String prerequisites) {
 		this.prerequisites = prerequisites;
 	}
-	
-	
 
 }
