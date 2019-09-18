@@ -1,0 +1,52 @@
+package com.cognizant;
+
+import org.hibernate.Transaction;
+
+import java.util.HashSet;
+import java.util.Set;
+
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
+import org.hibernate.classic.Session;
+
+public class TestHibernate {
+
+	public static void main(String[] args) {
+
+		Technologies technologies = new Technologies("1mysql", "mysql", 30000);
+		Trainings training2 = new Trainings("1", "ongoing", 64, technologies);
+		Trainings training1 = new Trainings("2", "accepted", 55, technologies);
+
+		Set<Trainings> trainingSet = new HashSet<Trainings>();
+		trainingSet.add(training1);
+		trainingSet.add(training2);
+		Users user1 = new Users("b@b.com", "b", "b", "blocked", "trainer", trainingSet);
+		Users user2 = new Users("a@a.com", "a", "a", "unblocked", "student", trainingSet);
+
+		Payments payments = new Payments(123, "25%fee", 133.2, "fee", "133", "a@a.com", "b@b.com");
+		MentorSkills mentorSkills = new MentorSkills(121, "core java", "java fundamentals", "programming fundamentals");
+
+//		ProductDetails pd = new ProductDetails(8, "p8", 8, "b8", 800, 80, 80, "available");
+		Configuration cfg = new Configuration();
+		cfg.configure("Configuration.xml");
+		SessionFactory sf = cfg.buildSessionFactory();
+		Session s = sf.openSession();
+		Transaction t = s.getTransaction();
+		t.begin();
+
+		s.save(user1);
+		s.save(user2);
+
+		s.save(technologies);
+		s.save(payments);
+		s.save(mentorSkills);
+		// s.save(mentorCalendar);
+//		s.save(m);
+//		s.save(ta);
+		t.commit();
+		s.close();
+		System.out.println("Executed Code!!");
+
+	}
+
+}

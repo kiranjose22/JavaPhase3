@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;com.cognizant.UserDetails&apos; to &apos;Users&apos;&#x0D;&#x0A;- Original project: &apos;MentorOnDemand&apos;&#x0D;&#x0A;- Original element: &apos;com.cognizant.UserDetails&apos;&#x0D;&#x0A;- Renamed element: &apos;com.cognizant.Users&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;UserDetails&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;com.cognizant{UserDetails.java[UserDetails" matchStrategy="1" name="Users" qualified="false" references="true" similarDeclarations="false" stamp="1568373651336" textual="false" version="1.0"/>
+</session>

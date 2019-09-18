@@ -1,0 +1,14 @@
+package com.cognizant;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
+public class Technologies {
+	
+	@Id
+	private String id;
+	private String techName;
+	
+
+}
